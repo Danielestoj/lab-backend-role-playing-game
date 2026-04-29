@@ -1,7 +1,6 @@
-const Combate        = require('../classes/Combate')
-const service        = require('../services/PersonajeService')
-const StorageService = require('../services/StorageService')
-const AppError       = require('../utils/AppError')
+const Combate  = require('../classes/Combate')
+const service  = require('../services/PersonajeService')
+const AppError = require('../utils/AppError')
 
 const simular = (req, res, next) => {
   try {
@@ -13,18 +12,10 @@ const simular = (req, res, next) => {
 
     const resultado = Combate.simular(p1, p2)
 
+    // Actualizar victorias/derrotas
     const idGanador  = resultado.ganador  === p1.nombre ? p1.id : p2.id
     const idPerdedor = resultado.perdedor === p1.nombre ? p1.id : p2.id
     service.registrarResultado(idGanador, idPerdedor)
-
-    const registro = {
-      fecha:    new Date().toISOString(),
-      ganador:  resultado.ganador,
-      perdedor: resultado.perdedor,
-      rondas:   resultado.rondas,
-      log:      resultado.log
-    }
-    StorageService.appendCombate(registro)
 
     res.json(resultado)
   } catch (err) {
@@ -32,19 +23,4 @@ const simular = (req, res, next) => {
   }
 }
 
-const historial = (req, res, next) => {
-  try {
-    const combates = StorageService.leerCombates()
-    const resumen = combates.map(c => ({
-      fecha:    c.fecha,
-      ganador:  c.ganador,
-      perdedor: c.perdedor,
-      rondas:   c.rondas
-    }))
-    res.json({ total: resumen.length, combates: resumen })
-  } catch (err) {
-    next(err)
-  }
-}
-
-module.exports = { simular, historial }
+module.exports = { simular }

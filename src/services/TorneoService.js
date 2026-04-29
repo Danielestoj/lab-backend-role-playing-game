@@ -2,7 +2,7 @@ const AppError       = require('../utils/AppError')
 const PersonajeService = require('./PersonajeService')
 const Combate        = require('../classes/Combate')
 
-// Tamaños de bracket válidos.
+// Tamaños de bracket válidos
 const TAMANIOS_VALIDOS = [4, 8]
 
 class TorneoService {
