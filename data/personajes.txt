@@ -1,0 +1,4 @@
+{"id":1,"nombre":"Broka","especie":"enano","categoria":"guerrero","stats":{"vida":150,"ataque":30,"defensa":25,"iniciativa":0},"victorias":0,"derrotas":0}
+{"id":2,"nombre":"Sorin","especie":"elfo","categoria":"guerrero","stats":{"vida":120,"ataque":35,"defensa":10,"iniciativa":15},"victorias":0,"derrotas":0}
+{"id":3,"nombre":"Grimr","especie":"enano","categoria":"explorador","stats":{"vida":130,"ataque":25,"defensa":20,"iniciativa":15},"victorias":0,"derrotas":0}
+{"id":4,"nombre":"Cain","especie":"humano","categoria":"explorador","stats":{"vida":110,"ataque":20,"defensa":10,"iniciativa":25},"victorias":0,"derrotas":0}
