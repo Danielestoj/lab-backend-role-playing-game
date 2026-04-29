@@ -13,12 +13,10 @@ const simular = (req, res, next) => {
 
     const resultado = Combate.simular(p1, p2)
 
-    // Actualizar victorias/derrotas en memoria y en personajes.txt
     const idGanador  = resultado.ganador  === p1.nombre ? p1.id : p2.id
     const idPerdedor = resultado.perdedor === p1.nombre ? p1.id : p2.id
     service.registrarResultado(idGanador, idPerdedor)
 
-    // ── Bonus: persistir combate en combates.txt ──────────────────────────
     const registro = {
       fecha:    new Date().toISOString(),
       ganador:  resultado.ganador,
@@ -27,7 +25,6 @@ const simular = (req, res, next) => {
       log:      resultado.log
     }
     StorageService.appendCombate(registro)
-    // ─────────────────────────────────────────────────────────────────────
 
     res.json(resultado)
   } catch (err) {
@@ -35,20 +32,15 @@ const simular = (req, res, next) => {
   }
 }
 
-// ── Bonus: GET /api/combates/historial ────────────────────────────────────
 const historial = (req, res, next) => {
   try {
     const combates = StorageService.leerCombates()
-
-    // Devolvemos solo los campos relevantes (sin el log completo de rondas)
-    // para mantener la respuesta limpia. El log completo sigue guardado en disco.
     const resumen = combates.map(c => ({
       fecha:    c.fecha,
       ganador:  c.ganador,
       perdedor: c.perdedor,
       rondas:   c.rondas
     }))
-
     res.json({ total: resumen.length, combates: resumen })
   } catch (err) {
     next(err)
