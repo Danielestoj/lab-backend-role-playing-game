@@ -1,4 +1,4 @@
-//TORNEOS
+//TORNEO
 const { Router } = require('express')
 const ctrl       = require('../controllers/torneoController')
 
