@@ -1,7 +1,11 @@
-const AppError       = require('../utils/AppError')
-const PersonajeService = require('./PersonajeService')
-const Combate        = require('../classes/Combate')
+// const AppError       = require('../utils/AppError')
+// const PersonajeService = require('./PersonajeService')
+// const Combate        = require('../classes/Combate')
 
+const AppError         = require('../utils/AppError')
+const PersonajeService = require('./PersonajeService')
+const Combate          = require('../classes/Combate')
+const StorageService   = require('./StorageService')
 // Tamaños de bracket válidos
 const TAMANIOS_VALIDOS = [4, 8]
 
@@ -111,7 +115,17 @@ class TorneoService {
         // Actualizar victorias/derrotas en el servicio
         const ganador  = resultado.ganador  === p1.nombre ? p1 : p2
         const perdedor = resultado.perdedor === p1.nombre ? p1 : p2
+        // PersonajeService.registrarResultado(ganador.id, perdedor.id)
+
         PersonajeService.registrarResultado(ganador.id, perdedor.id)
+
+StorageService.appendCombate({
+  fecha:    new Date().toISOString(),
+  ganador:  ganador.nombre,
+  perdedor: perdedor.nombre,
+  rondas:   resultado.rondas,
+  log:      resultado.log
+})
 
         enfrentamientos.push({
           enfrentamiento: i / 2 + 1,
