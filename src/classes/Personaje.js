@@ -36,11 +36,11 @@ class Personaje {
   /** README: Documenta qué métodos son obligatorios para cualquier subclase.
    * Clase abstracta BasePersonaje.js
    * Métodos obligatorios para cualquier subclase:
-   * habilidadEspecial() => debe ser implementado por cualquier personaje. Si no, error 'No implementado'
+   * habilidadEspecial() => debe ser implementado por cualquier personaje. Si no, error 'Pesronaje debe implementar la habilidad especial'
    */
   habilidadEspecial() {
     throw new Error(
-      `${this.constructor.name} debe implementar habilidadEspecial()`,
+      `${this.constructor.name} debe implementar su habilidad especial`,
     );
   }
 
