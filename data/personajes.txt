@@ -1,5 +1,5 @@
-{"id":1,"nombre":"Aldric","especie":"humano","categoria":"mago","stats":{"vida":90,"ataque":35,"defensa":0,"iniciativa":15},"victorias":0,"derrotas":3}
-{"id":2,"nombre":"Cain","especie":"humano","categoria":"guerrero","stats":{"vida":130,"ataque":25,"defensa":15,"iniciativa":10},"victorias":2,"derrotas":3}
+{"id":1,"nombre":"Aldric","especie":"humano","categoria":"mago","stats":{"vida":90,"ataque":35,"defensa":0,"iniciativa":15},"victorias":0,"derrotas":4}
+{"id":2,"nombre":"Cain","especie":"humano","categoria":"guerrero","stats":{"vida":130,"ataque":25,"defensa":15,"iniciativa":10},"victorias":3,"derrotas":3}
 {"id":3,"nombre":"Lyshara","especie":"elfo","categoria":"explorador","stats":{"vida":100,"ataque":30,"defensa":5,"iniciativa":30},"victorias":0,"derrotas":2}
 {"id":4,"nombre":"Halvard","especie":"enano","categoria":"explorador","stats":{"vida":130,"ataque":25,"defensa":20,"iniciativa":15},"victorias":4,"derrotas":0}
 {"id":5,"nombre":"Broka","especie":"enano","categoria":"mago","stats":{"vida":110,"ataque":40,"defensa":10,"iniciativa":5},"victorias":2,"derrotas":0}
