@@ -36,9 +36,11 @@ class PersonajeService {
   }
 
   obtenerPorId(id) {
-    const personaje = this._personajes.find(p => p.id === id)
-    if (!personaje) throw new AppError('Personaje no encontrado', 404)
-    return personaje
+    const ficha = this._personajes.find(p => p.id === id)
+    if (!ficha) throw new AppError('Personaje no encontrado', 404)
+
+    // Reconstruye la instancia real con métodos para el combate
+    return this._crearInstancia(ficha)
   }
 
   crearManual({ nombre, especie, categoria }) {
