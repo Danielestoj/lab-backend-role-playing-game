@@ -29,5 +29,20 @@ const eliminar = (req, res, next) => {
   try { res.json({ mensaje: 'Personaje eliminado', personaje: service.eliminar(Number(req.params.id)) }) }
   catch (err) { next(err) }
 }
-
-module.exports = { listar, obtenerUno, crearManual, crearAleatorio, actualizar, eliminar }
+const estadisticas = (req, res, next) => {
+  try {
+    const stats = service.obtenerEstadisticas();
+    res.json(stats);
+  } catch (err) {
+    next(err);
+  }
+};
+module.exports = {
+  listar,
+  obtenerUno,
+  crearManual,
+  crearAleatorio,
+  actualizar,
+  eliminar,
+  estadisticas,
+};
