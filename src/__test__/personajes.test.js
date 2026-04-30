@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../../app') // Importamos el app, no el index
+const app = require('../../app')
 
 describe('POST /api/personajes/manual', () => {
 
