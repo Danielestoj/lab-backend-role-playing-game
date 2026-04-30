@@ -1,7 +1,8 @@
-require("dotenv").config();
-const express = require("express");
-const logger = require("./src/middleware/logger");
-const errorHandler = require("./src/middleware/errorHandler");
+require('dotenv').config()
+const app = require('./app')
+const express      = require('express')
+const logger       = require('./src/middleware/logger')
+const errorHandler = require('./src/middleware/errorHandler')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,10 +28,7 @@ app.use((req, res) => {
 // Error handler SIEMPRE al final (4 parámetros)
 app.use(errorHandler);
 
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`⚔️  RPG Backend en http://localhost:${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`⚔️  RPG Backend en http://localhost:${PORT}`)
+})
 
-module.exports = app;
