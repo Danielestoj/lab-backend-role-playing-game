@@ -1,24 +1,42 @@
-const Guerrero = require('../classes/Guerrero');
-const Mago = require('../classes/Mago');
-const Combate = require('../classes/Combate');
+const request = require('supertest')
+const express = require('express')
 
-describe('Pruebas de Combate.simular()', () => {
+// Montamos una app mínima igual que index.js pero sin arrancar puerto
+const app = express()
+app.use(express.json())
+app.use('/api/personajes', require('../routes/personajes'))
+app.use('/api/combates',   require('../routes/combates'))
 
-    test('Debe ganar el Guerrero si tiene stats muy superiores al Mago', () => {
-              const fuerte = new Guerrero({ id: 1, nombre: 'GigaChad', especie: 'humano', categoria: 'guerrero' });
-        const debil = new Mago({ id: 2, nombre: 'Aprendiz', especie: 'elfo', categoria: 'mago' });
+const errorHandler = require('../middleware/errorHandler')
+app.use(errorHandler)
 
-        fuerte.stats.vida = 500;
-        fuerte.stats.ataque = 100;
-        
-        debil.stats.vida = 10;
-        debil.stats.ataque = 1;
+describe('POST /api/combates — IDs inexistentes', () => {
 
-        const resultado = Combate.simular(fuerte, debil);
+  test('devuelve 404 si el primer personaje no existe', async () => {
+    const res = await request(app)
+      .post('/api/combates')
+      .send({ id1: 99999, id2: 99998 })
 
-        expect(resultado.ganador).toBe('GigaChad');
-        expect(resultado.perdedor).toBe('Aprendiz');
-    });
+    expect(res.statusCode).toBe(404)
+    expect(res.body).toHaveProperty('error')
+  })
 
- 
-});
+  test('devuelve 400 si se envía el mismo ID dos veces', async () => {
+    const res = await request(app)
+      .post('/api/combates')
+      .send({ id1: 1, id2: 1 })
+
+    expect(res.statusCode).toBe(400)
+    expect(res.body).toHaveProperty('error')
+  })
+
+  test('devuelve 400 si faltan campos obligatorios', async () => {
+    const res = await request(app)
+      .post('/api/combates')
+      .send({ id1: 1 }) // falta id2
+
+    expect(res.statusCode).toBe(400)
+    expect(res.body).toHaveProperty('error')
+  })
+
+})
