@@ -12,6 +12,7 @@ app.use(logger)
 app.use('/api/personajes', require('./src/routes/personajes'))
 app.use('/api/combates',   require('./src/routes/combates'))
 app.use('/api/torneos',    require('./src/routes/torneos'))
+app.get("/api/estadisticas", require("./src/controllers/personajeController").estadisticas);
 
 // 404 para rutas no definidas
 app.use((req, res) => {
