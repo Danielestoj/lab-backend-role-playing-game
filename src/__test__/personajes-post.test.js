@@ -5,7 +5,7 @@ describe('POST /api/personajes/manual', () => {
 
   test('debe crear un personaje y devolver 201', async () => {
     const nuevoPersonaje = {
-      nombre: "TestHero", // Ajustado para que coincida con el expect de abajo
+      nombre: "TestHero", 
       especie: "humano",
       categoria: "guerrero"
     }
