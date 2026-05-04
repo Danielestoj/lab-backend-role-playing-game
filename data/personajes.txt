@@ -28,3 +28,4 @@
 {"id":28,"nombre":"Ilda","especie":"enano","categoria":"guerrero","stats":{"vida":150,"ataque":30,"defensa":25,"iniciativa":0},"victorias":2,"derrotas":0}
 {"id":29,"nombre":"Sorin","especie":"elfo","categoria":"mago","stats":{"vida":80,"ataque":45,"defensa":-5,"iniciativa":20},"victorias":0,"derrotas":1}
 {"id":30,"nombre":"Sera","especie":"humano","categoria":"guerrero","stats":{"vida":130,"ataque":25,"defensa":15,"iniciativa":10},"victorias":0,"derrotas":1}
+{"id":31,"nombre":"NombreActualizado","especie":"elfo","categoria":"explorador","stats":{"vida":100,"ataque":30,"defensa":5,"iniciativa":30},"victorias":0,"derrotas":0}
